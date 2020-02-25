@@ -29,11 +29,14 @@ with open(csvpath, newline='') as csvfile:
             changes.append(int(profit_loses[i+1])-int(profit_loses[i]))
 
            
-
-print("Financial Analysis")
-print("----------------------------")
-print("Total Months: "+ str(len(date)))
-print("Total: $"+ str(mean(net_total))) 
-print("Average  Change: $"+ str(mean(changes)))
-print("Greatest Increase in Profits: " + date[changes.index(int(max(changes)))+1] + " ($" + str(max(changes)) + ")") 
-print("Greatest Increase in Profits: " + date[changes.index(int(min(changes)))+1] + " ($" + str(min(changes)) + ")") 
+output=(f'Financial Analysis\n'
+        f'----------------------------\n'
+        f'Total Months: {len(date)}\n'
+        f'Total: $ {mean(net_total)}\n' 
+        f'Average  Change: $ {mean(changes)}\n'
+        f'Greatest Increase in Profits:  {date[changes.index(int(max(changes)))+1]}  (${max(changes)})\n' 
+        f'Greatest Increase in Profits:  {date[changes.index(int(min(changes)))+1]}  (${min(changes)}') 
+print(output)
+output_path=open('output_path','w')
+output_path.write(output)
+output_path.close()
